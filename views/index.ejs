@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Blog</title>
+	<link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<body>
+	<h1>Welcome to My Blog</h1>
+
+	<!-- Form for post creation -->
+	<form action="/create-post" method="post">
+		<textarea name="content" placeholder="Enter your blog post content here"></textarea>
+		<button type="submit">Create Post</button>
+	</form>
+
+	<!-- Display existing posts -->
+	<div class="posts">
+		<% posts.forEach(post=> { %>
+			<div class="post">
+				<p>
+					<%= post.content %>
+				</p>
+				<!-- Edit button for each post -->
+				<form action="/edit-post/<%= post.id %>" method="get">
+					<button type="submit">Edit</button>
+				</form>
+				<!-- Delete button -->
+				<form action="/delete-post/<%= post.id %>" method="post">
+					<button type="submit">Delete</button>
+				</form>
+			</div>
+			<% }); %>
+	</div>
+	
+	<!-- You can implement this part later -->
+</body>
+
+</html>
